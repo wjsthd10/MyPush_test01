@@ -8,17 +8,26 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/notifiTV"
-        android:padding="8dp"
+    <EditText
+        android:id="@+id/title_et"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:layout_weight="1"
-        android:text="Show Data"
-        android:textStyle="bold"
+        android:layout_height="58dp"
+        android:padding="8dp"
+        android:hint="제목입력(20)"
         android:textSize="20sp"
-        android:gravity="center_horizontal"/>
+        android:inputType="text"
+        android:maxLength="20"/>
+    <EditText
+        android:id="@+id/msg_et"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:inputType="textMultiLine"
+        android:hint="본문 내용입력"
+        android:maxLines="3"
+        android:gravity="top"
+        android:padding="8dp"
+        android:textSize="20sp"
+        android:layout_marginTop="8dp"/>
 
     <Button
         android:layout_margin="16dp"
@@ -26,6 +35,9 @@
         android:text="FCM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+
+
 
 
 

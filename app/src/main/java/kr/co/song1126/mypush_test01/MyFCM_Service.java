@@ -25,20 +25,25 @@ public class MyFCM_Service extends FirebaseMessagingService {
         super.onMessageReceived(remoteMessage);
         Log.d("onreceivedLog", remoteMessage.getFrom());
 
-        String name="";
+        String title="";
         String msg="";
+
+        String notiTitle=null;
+        // remoteMessage.getNotification().getTitle();
+        String notiBody=null;
+        // remoteMessage.getNotification().getBody();
 
         Map<String, String> data;
 
-        String notiTitle="";
-        String notiBody="";
-
-        if (remoteMessage.getData().size()>0){
+        if (remoteMessage.getData().size()>0){// map방식으로 반든 data
             Log.d("getMessageData", remoteMessage.getData().toString());
             data=remoteMessage.getData();
-            name=data.get("name");
+            title=data.get("title");
             msg=data.get("msg");
         }
+
+
+
 
         if (remoteMessage.getNotification()!=null){
             Log.d("getNotification", remoteMessage.getNotification().getBody());
@@ -65,7 +70,7 @@ public class MyFCM_Service extends FirebaseMessagingService {
         builder.setContentText(notiBody);
 
         Intent intent=new Intent(this, MainActivity.class);
-        intent.putExtra("name", name);
+        intent.putExtra("title", title);
         intent.putExtra("msg", msg);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
