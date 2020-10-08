@@ -68,6 +68,14 @@ public class MyFCM_Service extends FirebaseMessagingService {
         builder.setSmallIcon(R.drawable.ic_beach_access_black_24dp);
         builder.setContentTitle(notiTitle);
         builder.setContentText(notiBody);
+        builder.setPriority(NotificationCompat.PRIORITY_MAX);
+        builder.setCategory(NotificationCompat.CATEGORY_ALARM);
+//        안드로이드 버전 7.0에서는 기본적으로 체널을 지정하지 않아도 알람이 오는 버전이었음..
+//        그래서 알람의 중요도설정(IMPORTANCE_HIGH)을 기본적으로 받을 수 없기 때문에
+//        NotificationCompat에 setDefaults로 모든 기본설정을 명시적으로 지정해야한다.
+        builder.setDefaults(NotificationCompat.DEFAULT_ALL);
+
+//        노티피케이션 클릭시 전달할 데이터 지정하여 넘겨주는 것
 
         Intent intent=new Intent(this, MainActivity.class);
         intent.putExtra("title", title);
